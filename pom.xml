@@ -11,7 +11,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.4.RELEASE</version>
-        <relativePath/>
     </parent>
 
     <properties>
@@ -76,7 +75,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- Build docker image `mvn docker:build`-->
+
+            <!-- We use the Resources plugin to filer Dockerfile and run.sh, it inserts actual JAR filename -->
+            <!-- The final Dockerfile will be created in target/dockerfile/Dockerfile -->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
@@ -100,6 +101,7 @@
                 </executions>
             </plugin>
 
+            <!-- Build docker image `mvn docker:build`-->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
@@ -131,15 +133,20 @@
             <artifactId>guava</artifactId>
             <version>${google.guava.version}</version>
         </dependency>
+
+        <!-- spring-boot starters -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- test dependencies -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>${mockito.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+
     </dependencies>
 
     <repositories>
