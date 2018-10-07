@@ -1,5 +1,6 @@
 package com.max.hello;
 
+import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -15,9 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "hello")
 public class HelloServiceMain {
 
+    private static final Logger LOG = Logger.getLogger(HelloServiceMain.class);
+
     @RequestMapping(value = "/{firstName}/{lastName}", method = RequestMethod.GET)
     public String hello(@PathVariable("firstName") String firstName,
                         @PathVariable("lastName") String lastName) {
+
+        LOG.info("hello-service HELLO called");
+
         return String.format("{\"message\":\"Hello %s %s\"}", firstName, lastName);
     }
 
