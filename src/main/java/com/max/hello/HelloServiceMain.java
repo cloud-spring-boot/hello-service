@@ -1,5 +1,6 @@
 package com.max.hello;
 
+import com.max.hello.dto.MessageDto;
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,12 +20,12 @@ public class HelloServiceMain {
     private static final Logger LOG = Logger.getLogger(HelloServiceMain.class);
 
     @RequestMapping(value = "/{firstName}/{lastName}", method = RequestMethod.GET)
-    public String hello(@PathVariable("firstName") String firstName,
-                        @PathVariable("lastName") String lastName) {
+    public MessageDto hello(@PathVariable("firstName") String firstName,
+                            @PathVariable("lastName") String lastName) {
 
         LOG.info("hello-service HELLO called");
 
-        return String.format("{\"message\":\"Hello %s %s\"}", firstName, lastName);
+        return new MessageDto(String.format("Hello %s %s", firstName, lastName));
     }
 
     public static void main(String[] args) {
