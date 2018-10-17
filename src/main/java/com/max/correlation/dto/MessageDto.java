@@ -1,4 +1,4 @@
-package com.max.hello.dto;
+package com.max.correlation.dto;
 
 public class MessageDto {
 

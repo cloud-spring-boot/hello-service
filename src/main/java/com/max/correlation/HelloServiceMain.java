@@ -1,6 +1,6 @@
-package com.max.hello;
+package com.max.correlation;
 
-import com.max.hello.dto.MessageDto;
+import com.max.correlation.dto.MessageDto;
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +23,7 @@ public class HelloServiceMain {
     public MessageDto hello(@PathVariable("firstName") String firstName,
                             @PathVariable("lastName") String lastName) {
 
-        LOG.info("hello-service HELLO called");
+        LOG.info("correlation-service HELLO called");
 
         return new MessageDto(String.format("Hello %s %s", firstName, lastName));
     }
