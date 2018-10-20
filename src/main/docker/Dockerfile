@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-alpine
 MAINTAINER Maksym Stepanenko <stepanenkomaksi@gmail.com>
-RUN  apk update && apk upgrade && apk add netcat-openbsd && apk add bash
+RUN  apk update && apk upgrade && apk add netcat-openbsd && apk add bash && apk add tcpdump
 RUN mkdir -p /usr/local/hello-service
 ADD @project.build.finalName@.jar /usr/local/hello-service/
 ADD run.sh run.sh
