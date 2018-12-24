@@ -1,6 +1,6 @@
 spring:
   application:
-    name: correlation-service
+    name: hello-service
   cloud:
     config:
       enabled: true
