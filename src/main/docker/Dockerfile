@@ -1,10 +1,12 @@
-FROM openjdk:8-jre-alpine
+FROM gcr.io/distroless/java
 MAINTAINER Maksym Stepanenko <stepanenkomaksi@gmail.com>
-RUN  apk update && apk upgrade && apk add netcat-openbsd bash tcpdump curl
-RUN mkdir -p /usr/local/hello-service
-RUN mkdir -p /usr/local/hello-service/pcap
+
 ADD @project.build.finalName@.jar /usr/local/hello-service/
-ADD run.sh run.sh
-RUN chmod +x run.sh
-HEALTHCHECK --start-period=30s --interval=5s CMD curl http://localhost:8080/health || exit 1
-CMD ./run.sh
+
+ENTRYPOINT [ \
+"java", \
+"-Deureka.client.serviceUrl.defaultZone=$EUREKASERVER_URI", \
+"-Djava.security.egd=file:/dev/./urandom", \
+"-jar", \
+"/usr/local/hello-service/hello-service-1.0.0-SNAPSHOT.jar" \
+]
