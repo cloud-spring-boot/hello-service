@@ -15,7 +15,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <google.guava.version>24.1.1-jre</google.guava.version>
+        <google.guava.version>29.0-jre</google.guava.version>
         <enforcer.api.version>1.4.1</enforcer.api.version>
         <mockito.version>1.9.5</mockito.version>
         <start-class>com.max.correlation.HelloServiceMain</start-class>
